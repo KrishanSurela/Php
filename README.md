@@ -377,13 +377,14 @@ echo "Hello $x";// Hello John
 echo strlen("Hello world!");//12
 ```
 
-### Word Count ->
+### str_word_count() ->
 
 #### Count the number of word in the string "Hello world!":
 
 ```php
 echo str_word_count("Hello world!");//2
 ```
+
 ### Search For Text Within a String ->
 
 #### The PHP strpos() function searches for a specific text within a string.
@@ -394,6 +395,395 @@ echo str_word_count("Hello world!");//2
 
 ```php
 echo strpos("Hello world!", "world");//6
+echo stripos("Hello world!", "WORLD"); //6 case insensitive
+```
+
+### PHP addcslashes() Function =>
+
+#### The addcslashes() function returns a string with backslashes in front of the specified characters.
+
+-   Note: The addcslashes() function is case-sensitive.
+
+```php
+<?php
+$str = addcslashes("Hello World!","W");
+echo($str);
+?>
+
+//Hello \World!
+```
+
+### PHP addslashes() Function=>
+
+#### The addslashes() function returns a string with backslashes in front of predefined characters.
+
+-   The predefined characters are:
+
+-   single quote (')
+-   double quote (")
+-   backslash (\)
+-   NULL
+
+```php
+<?php
+$str = addslashes('What does "yolo" mean?');
+echo($str);
+?>
+//output
+
+What does \"yolo\" mean?
+```
+
+### PHP bin2hex() Function =>
+
+#### The bin2hex() function converts a string of ASCII characters to hexadecimal values. The string can be converted back using the pack() function.
+
+```php
+<?php
+$str = bin2hex("Hello World!");
+echo($str)."<br>";
+echo pack("H*",$str);
+?>
+//output
+48656c6c6f20576f726c6421
+Hello World!
+```
+
+### PHP chop() Function=>
+
+#### Remove characters from the right end of a string:
+
+```php
+  <?php
+    $str = "Hello World!";
+    echo $str . "<br>";
+    echo chop($str,"World!");
+    ?>
+
+//output
+Hello World!
+Hello
+```
+
+### PHP chr() Function=>
+
+#### The chr() function returns a character from the specified ASCII value.
+
+-   The ASCII value can be specified in decimal, octal, or hex values. Octal values are defined by a leading 0, while hex values are defined by a leading 0x.
+
+```php
+
+<?php
+echo chr(52) . "<br>"; // Decimal value
+echo chr(052) . "<br>"; // Octal value
+echo chr(0x52) . "<br>"; // Hex value
+?>
+// 4
+//*
+//R
+
+<?php
+$str = chr(046);
+echo("You $str me forever!");// You & me forever
+?>
+```
+
+### PHP chunk_split() Function =>
+
+#### The chunk_split() function splits a string into a series of smaller parts.
+
+-   Note: This function does not alter the original string.
+
+```php
+  <?php
+  $str = "Hello world!";
+  echo chunk_split($str,1,".");
+  ?>
+
+  //output
+  H.e.l.l.o. .w.o.r.l.d.!.
+```
+
+### explode() => The explode() function breaks a string into an array.
+
+-   Note: The "separator" parameter cannot be an empty string.
+
+-   Note: This function is binary-safe.
+
+```php
+<?php
+$str = 'one,two,three,four,five';
+
+// zero limit
+print_r(explode(',',$str,0));
+print "<br>";
+
+// positive limit
+print_r(explode(',',$str,2));
+print "<br>";
+
+// negative limit
+print_r(explode(',',$str,-1));
+?>
+
+//output
+
+Array ( [0] => one,two,three,four,five )
+Array ( [0] => one [1] => two,three,four,five )
+Array ( [0] => one [1] => two [2] => three [3] => four ) // total me 1 kmm
+```
+
+### implode() => The implode() function returns a string from the elements of an array.
+
+```php
+<?php
+$arr = array('Hello','World!','Beautiful','Day!');
+echo implode(" ",$arr);
+?>
+
+//output=>
+Hello World Beautiful Day!
+```
+
+### join() => The join() function returns a string from the elements of an array.
+
+-   The join() function is an alias of the implode() function.
+
+```php
+<?php
+$arr = array('Hello','World!','Beautiful','Day!');
+echo join(" ",$arr);
+?>
+//output
+Hello World Beautiful Day!
+```
+
+### PHP fprintf() Function=>
+
+#### Write some text to a text file named "test.txt"
+
+```php
+  $number = 9;
+  $str = "Beijing";
+  $file = fopen("test.txt","w");
+  echo fprintf($file,"There are %u million bicycles in %s.",$number,$str); //40
+
+
+  The following text will be written to the file "test.txt".
+  There are 9 million bicycles in Beijing.
+
+
+```
+
+### lcfirst() => Converts the first character of a string to lowercase.
+
+### ltrim() => Removes whitespace or other characters from the left side of the string.
+
+### print() => outputs one or more strings. this function is slighter slow than echo.
+
+### rtrim() => Removes whitespace or other characters from the right side of a string.
+
+### str_ireplace() =>(case -insensitive) The str_ireplace() function replaces some characters with some other characters in a string.
+
+```php
+<?php
+echo str_ireplace("WORLD","Peter","Hello good world!");
+?>
+// Hello good Peter
+```
+
+### str_replace() => Replaces some character in a string (case-sensitive)
+
+```php
+str_replace("replaceable word","replacement",string)
+echo str_replace("world","Peter","Hello world!");
+//Hello Peter!
+```
+
+### str_repeat() => Repeat a string a specified number of times.
+
+```php
+
+<?php
+echo str_repeat("Wow",13);
+?>
+//WowWowWowWowWowWowWowWowWowWowWowWowWow
+```
+
+### str_shuffle => Randomly shuffiles all characters in a string.
+
+```php
+<?php
+echo str_shuffle("Hello World");
+?>
+//HroW lloeld
+//Try to refresh the page. This function will randomly shuffle all characters each time.
+```
+
+### str_split() => Split a string into an array
+
+```php
+<?php
+print_r(str_split("Hello World"));
+?>
+//Array ( [0] => H [1] => e [2] => l [3] => l [4] => o [5] => [6] => W [7] => o [8] => r [9] => l [10] => d )
+```
+
+### strcasecmp() => Compare two strings (case-insensitive).
+
+```php
+echo strcasecmp("Hello world!","HELLO WORLD!");
+//0
+// if output is 0 means these two strings are equal.
+```
+
+### strchr() => find the first occurance of a string inside another string and return rest of the string after find occurance. this function is case-sensitive.
+
+-   This function is alias of strstr() function.And this function is also case-sensitive. for case-insensitive we can use stristr() function.
+
+```php
+echo strchr("Hello Krishan is so handsome man","Krishan");
+//Krishan is so handsome man
+
+//Opposite
+
+echo strchr("Hello Krishan is so handsome man","is",true);
+// Hello Kr
+
+echo stristr("Hello world!","WORLD"); // case-insensitive
+// world!
+```
+
+### strtolower() => Converts a string to lowercse letters.
+
+### strtoupper() => Converts a string to uppercase letters.
+
+```php
+echo strtoupper("Hello WORLD!");
+
+// HELLO WORLD!
+```
+
+### substr() => return a part of a string.
+
+```php
+echo substr("Hello world",6);//world
+echo substr("Hello world",-4);//orld
+echo substr("Hello world",-4,2) //or
+echo substr("Hello world",1,2) //el
+
+
+substr(string,start,length)
+
+Start =>
+
+- A positive number => Start at a specified position in the string
+- A negative number => Start at a specified position from the end of the string.
+- 0 => start at the first character in string.
+
+length =>
+- A positive number - The length to be returned from the start parameter
+- Negative number - The length to be returned from the end of the string
+- If the length parameter is 0, NULL, or FALSE - it return an empty string
+```
+
+### substr_count() => Counts the number of times a substring occurs in a string.
+
+```php
+echo substr_count("Hello world Krishan. The world is nice","is");//2
+
+echo substr_count("Hello world Krishan. The world is nice","is",13,7);//1
+```
+
+### substr_replace() => this function replaces a part of a string with another string.
+
+```php
+substr_replace(string,replacement,start,length)
+
+echo substr_replace("My Name is Krishan. I am from Bansur","Anil",11,7);
+// My Name is Anil. I am from Bansur
+
+echo substr_replace("Hello world","earth",6);
+// Hello earth
+```
+
+### trim() => Removes whitespaces or other character from both side of a string.
+
+```php
+$str = "Hello World!";
+echo $str . "<br>"; // Hello World!
+echo trim($str,"Hed!"); // llo Worl
+
+```
+
+### ltrim() => Removes whitespace or other predefined characters from the left side of a string
+
+### rtrim() => Removes whitespace or other predefined characters from the right side of a string
+
+### ucfirst() => Converts the first character of a string to uppercase
+
+```php
+echo ucfirst("hello world! my name is krishan");
+//  Hello world! my name is krishan
+```
+
+### ucwords() => Converts the first character of each in a string to uppercase.
+
+```php
+echo ucwords("hello world");// Hello World!
+```
+
+## PHP Casting =>
+
+-   (string) - Converts to data type String
+-   (int) - Converts to data type Integer
+-   (float) - Converts to data type Float
+-   (bool) - Converts to data type Boolean
+-   (array) - Converts to data type Array
+-   (object) - Converts to data type Object
+-   (unset) - Converts to data type NULL
+
+## PHP Math =>
+
+### pi() function => return value of pi
+
+### min() and max() => find lowest and greatest value in a list of arguments
+
+```php
+echo(min(0, 150, 30, 20, -8, -200));//-200
+echo(max(0, 150, 30, 20, -8, -200));//150
+```
+
+### abs() => The abs() function returns the absolute (positive) value of a number:
+
+```php
+echo(abs(-6.7)); //6.7
+```
+
+### sqrt() => return the square root of the given value.
+
+```php
+echo(sqrt(64) . "<br>"); //8
+echo(sqrt(0) . "<br>"); //0
+echo(sqrt(1) . "<br>"); //1
+echo(sqrt(9)); //3
+```
+
+### round() => It rounds a floating-point number to its nearest integer.
+
+```php
+echo(round(0.60) . "<br>"); //1
+echo(round(0.50) . "<br>"); //1
+echo(round(0.49) . "<br>"); //0
+echo(round(-4.40) . "<br>"); //-4
+echo(round(-4.60)); //-5
+```
+
+### rand() function => it generate a random number.
+
+```php
+echo(rand(10, 100));//67
+// each time the value will be changing.
 ```
 
 
