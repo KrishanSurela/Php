@@ -32,6 +32,31 @@ $y = 'Hello world!';
 var_dump($x);
 echo "<br>";
 var_dump($y);
+echo "<br>";
+echo __dir__."<br>";
+
+echo __file__."<br>";
+
+function myValue(){
+    return __function__; // return function name
+}
+echo myValue()."<br>";// myValue
+
+class Car {
+    public $color;
+    public $model;
+    public function __construct($color, $model) {
+      $this->color = $color;
+      $this->model = $model;
+    }
+  }
+  $myCar = new Car("red", "Volvo");
+  
+  foreach ($myCar as $x => $y) {
+    echo "$x: $y <br>";
+  }
+  //color :red
+  //model : Volvo
 ?>
 </body>
 </html>
