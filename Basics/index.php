@@ -57,6 +57,11 @@ class Car {
   }
   //color :red
   //model : Volvo
+
+  function addNumbers(float $a, float $b){
+    return $a + $b;
+  }
+  echo addNumbers(1.2, 5.2);
 ?>
 </body>
 </html>

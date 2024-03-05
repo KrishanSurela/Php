@@ -110,3 +110,45 @@ function myFamily($lastname , ...$firstname){
 $a = myFamily(Surela,Krishan,Deepak,Monu,Pankaj);
 echo $a;
 ```
+
+## php is loosely typed languange.
+
+### PHP automatically associates a data type to the variable, depending on its value. since the data types are not set in a strict sense, we can do things like adding a string to an Integer without causing an error.
+
+### In PHP 7 , type declaration were added. this gives us an option to specify the expected data type when declaring a function , and by adding the strict declaration , it will throw a " fatal Error " if the datatype mismatches.
+
+```php
+function addNumbers(int $a,int $b){
+  return $a+$b;
+}
+echo addNumbers(5,"5 days");
+// since strict is NOT enabled "5 days " is changes to int(5) , and it will return 10
+```
+
+### To specify strict we need to set declare(strict_types=1); . this must be on the very first line of php file.
+
+```php
+ declare(strict_types=1); // strict requirement
+
+function addNumbers(int $a, int $b) {
+  return $a + $b;
+}
+echo addNumbers(5, "5 days");
+// since strict is enabled and "5 days" is not an integer, an error will be thrown
+
+```
+
+### PHP return type declaration =>
+
+```php
+declare(strict_types=1); // strict requirement
+function addNumbers(float $a, float $b) : float {
+  return $a + $b;
+}
+echo addNumbers(1.2, 5.2);
+=>
+function addNumbers(float $a, float $b) : int {
+  return (int)($a + $b);
+}
+echo addNumbers(1.2, 5.2);
+```
